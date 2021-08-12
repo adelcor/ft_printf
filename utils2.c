@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adel-cor <adel-cor@student.42urduli>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/12 09:49:31 by adel-cor          #+#    #+#             */
+/*   Updated: 2021/08/12 10:00:39 by adel-cor         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	ft_putchar(char c, int *count)
@@ -8,28 +20,27 @@ void	ft_putchar(char c, int *count)
 
 void	ft_putstr(char *str, int *count)
 {
-	int i;
-	i = 0;
+	int	i;
 
-	if(!str)
+	i = 0;
+	if (!str)
 	{
 		*count += ft_printf("(null)");
 		return ;
-	}	   
-
-	while(str[i] != '\0')
+	}
+	while (str[i] != '\0')
 	{
 		ft_putchar(str[i], count);
 		i++;
 	}
 }
 
-void ft_putnbr(int n, int *count)
+void	ft_putnbr(int n, int *count)
 {
-	unsigned int num;
-	num = 0;
+	unsigned int	num;
 
-	if( n < 0)
+	num = 0;
+	if (n < 0)
 	{
 		ft_putchar('-', count);
 		num = (unsigned int)(n * -1);
@@ -42,29 +53,29 @@ void ft_putnbr(int n, int *count)
 		ft_putnbr(num / 10, count);
 	ft_putchar((num % 10) + '0', count);
 }
-void ft_putunbr(unsigned int n, int *count)
+
+void	ft_putunbr(unsigned int n, int *count)
 {
-	unsigned int num;
-	
+	unsigned int	num;
+
 	num = n;
 	if (num >= 10)
 		ft_putunbr(num / 10, count);
 	ft_putchar((num % 10) + '0', count);
 }
 
-void ft_puthexap(unsigned long long n, int *count)
+void	ft_puthexap(unsigned long long n, int *count)
 {
-	unsigned	long long num;
+	unsigned long long	num;
 
 	num = (unsigned long long)n;
-    if(num > 15)
-    {
-        ft_puthexap(num / 16, count);
-        num = num % 16;
-    }
-    if( num < 10)
-        ft_putchar((num + 48), count);
-    else
+	if (num > 15)
+	{
+		ft_puthexap(num / 16, count);
+		num = num % 16;
+	}
+	if (num < 10)
+		ft_putchar((num + 48), count);
+	else
 		ft_putchar((num + 87), count);
-    
 }

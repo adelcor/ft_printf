@@ -6,7 +6,7 @@
 /*   By: adel-cor <adel-cor@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:35:05 by adel-cor          #+#    #+#             */
-/*   Updated: 2021/08/11 18:35:20 by adel-cor         ###   ########.fr       */
+/*   Updated: 2021/08/12 09:33:49 by adel-cor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_printf(const char *str, ...)
 	int		count;
 
 	count = 0;
+	if (!str)
+		return (0);
 	va_start(arg, str);
 	ft_task(str, arg, &count);
 	va_end(arg);
